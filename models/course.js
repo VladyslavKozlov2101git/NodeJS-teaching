@@ -7,7 +7,7 @@ class Course {
     this.title = title
     this.price = price
     this.img = img
-    this.id = uuid.v4()
+    this.id = uuid(v4)
   }
 
   toJSON() {
@@ -19,10 +19,10 @@ class Course {
     }
   }
 
-  static async update(course){
-    const courses = await Course.getAll();
-    
-    const idx = courses.findIndex(c=> c.id === course.id)
+  static async update(course) {
+    const courses = await Course.getAll()
+
+    const idx = courses.findIndex(c => c.id === course.id)
     courses[idx] = course
 
     return new Promise((resolve, reject) => {
@@ -75,9 +75,9 @@ class Course {
     })
   }
 
-  static async getByID(id){
+  static async getById(id) {
     const courses = await Course.getAll()
-    return courses.find(c=>c.id===id)
+    return courses.find(c => c.id === id)
   }
 }
 
